@@ -1,3 +1,7 @@
+## Course Work Learnt and Inspired from
+
+https://www.educative.io/courses/reintroducing-react-v16-beyond/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
