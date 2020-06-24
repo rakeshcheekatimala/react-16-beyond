@@ -3,6 +3,8 @@ import "./App.css";
 import { ChatPanel } from "./components";
 
 class App extends Component {
+  chatThreadRef = React.createRef();
+
   state = {
     points: 10,
     chatList: ["Hey", "Hello", "Hi"],
@@ -13,6 +15,21 @@ class App extends Component {
     return {
       points: 1000,
     };
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    if (this.state.chatList > prevState.chatList) {
+      const chatThreadRef = this.chatThreadRef.current;
+      return chatThreadRef.scrollHeight - chatThreadRef.scrollTop;
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (snapshot !== null) {
+      const chatThreadRef = this.chatThreadRef.current;
+      chatThreadRef.scrollTop = chatThreadRef.scrollHeight - snapshot;
+    }
   }
 
   _handleAddChat = () => {
