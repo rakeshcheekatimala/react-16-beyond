@@ -1,15 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import Routes from "./pages";
 import * as serviceWorker from "./serviceWorker";
 import { ErrorBoundary } from "./components";
+import { UserProvider } from "./context/usercontext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
+    <UserProvider>
+      <ErrorBoundary>
+        <Routes />
+      </ErrorBoundary>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
